@@ -1,9 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import DashboardFilter from '../features/dashboard/DashboardFilter';
 import Heading from '../ui/Heading';
 import Row from '../ui/Row';
 import styled, { css } from 'styled-components';
-import DashboardLayoutCash from '../features/dashboard/DashboardLayoutCash'
+import DashboardLayoutCash from '../features/dashboard/DashboardLayoutCash';
 import CashTableOperations from '../features/cash/CashTableOperations';
 
 const StyledButtonPageContainer = styled.div`
@@ -30,7 +29,6 @@ const StyledButtonPage = styled.button`
   border-radius: var(--border-radius-sm);
   font-weight: 500;
   font-size: 1.4rem;
-  /* To give the same height as select */
   padding: 0.44rem 0.8rem;
   transition: all 0.3s;
 
@@ -41,25 +39,28 @@ const StyledButtonPage = styled.button`
 `;
 
 function DashboardCash() {
-     const navigate = useNavigate(); // Get the navigate function
-    
-      const handleNavigateToDashboard = () => {
-        navigate('/dashboard'); 
-      };
-    
-      const handleNavigateToDashboardStocks = () => {
-        navigate('/dashboard/dashboard-stocks'); // Call navigate with the desired path
-      };
+  const navigate = useNavigate();
+  const handleNavigateToDashboard = () => {
+    navigate('/dashboard');
+  };
+
+  const handleNavigateToDashboardStocks = () => {
+    navigate('/dashboard/dashboard-stocks');
+  };
   return (
     <>
       <Row type="horizontal">
         <Heading as="h1">
           <StyledButtonPageContainer>
-            <StyledButtonPage onClick={handleNavigateToDashboard} >Main Dashboard</StyledButtonPage>
-            <StyledButtonPage  onClick={handleNavigateToDashboardStocks}>Stocks Dashboard</StyledButtonPage>
+            <StyledButtonPage onClick={handleNavigateToDashboard}>
+              Main Dashboard
+            </StyledButtonPage>
+            <StyledButtonPage onClick={handleNavigateToDashboardStocks}>
+              Stocks Dashboard
+            </StyledButtonPage>
           </StyledButtonPageContainer>
-          </Heading>
-        <CashTableOperations/>
+        </Heading>
+        <CashTableOperations />
       </Row>
       <DashboardLayoutCash />
     </>

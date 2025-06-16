@@ -6,7 +6,8 @@ import { Toaster } from 'react-hot-toast';
 import { lazy, Suspense } from 'react';
 import SpinnerFullPage from './ui/SpinnerFullPage';
 import ProtectedRoute from './ui/ProtectedRoute';
-import { DarkModeProvider } from './context/DarkModeContext'
+import { DarkModeProvider } from './context/DarkModeContext';
+import { PrivacyModeProvider } from './context/PrivacyModeContext';
 
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const DashboardCash = lazy(() => import('./pages/DashboardCash'));
@@ -30,73 +31,78 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <DarkModeProvider>
-      <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
-        <GlobalStyles />
-        <BrowserRouter>
-          <Suspense fallback={<SpinnerFullPage />}>
-            <Routes>
-              <Route
-                element={
-                  <ProtectedRoute>
-                    <AppLayout />
-                  </ProtectedRoute>
-                }
-              >
-                <Route index element={<Navigate replace to="dashboard" />} />
-                <Route path="dashboard" element={<Dashboard />} />
+      <PrivacyModeProvider>
+        <QueryClientProvider client={queryClient}>
+          <ReactQueryDevtools initialIsOpen={false} />
+          <GlobalStyles />
+          <BrowserRouter>
+            <Suspense fallback={<SpinnerFullPage />}>
+              <Routes>
                 <Route
-                  path="dashboard/dashboard-cash"
-                  element={<DashboardCash />}
-                />
-                <Route
-                  path="dashboard/dashboard-stocks"
-                  element={<DashboardStocks />}
-                />
-                <Route path="/stocks" element={<Stocks />} />
-                <Route path="/stocks/mf" element={<MutualFunds />} />
-                <Route path="/stocks/tradebook" element={<TradeBook />} />
-                <Route
-                  path="/stocks/trading-journal"
-                  element={<TradingJournal />}
-                />
-                <Route path="/stocks/profit&loss" element={<ProfitAndLoss />} />
-                <Route path="cash" element={<Cash />} />
-                <Route path="assets" element={<Assets />} />
-                <Route path="settings" element={<Settings />}>
-                  <Route path="/settings/account" element={<Account />} />
+                  element={
+                    <ProtectedRoute>
+                      <AppLayout />
+                    </ProtectedRoute>
+                  }
+                >
+                  <Route index element={<Navigate replace to="dashboard" />} />
+                  <Route path="dashboard" element={<Dashboard />} />
+                  <Route
+                    path="dashboard/dashboard-cash"
+                    element={<DashboardCash />}
+                  />
+                  <Route
+                    path="dashboard/dashboard-stocks"
+                    element={<DashboardStocks />}
+                  />
+                  <Route path="/stocks" element={<Stocks />} />
+                  <Route path="/stocks/mf" element={<MutualFunds />} />
+                  <Route path="/stocks/tradebook" element={<TradeBook />} />
+                  <Route
+                    path="/stocks/trading-journal"
+                    element={<TradingJournal />}
+                  />
+                  <Route
+                    path="/stocks/profit&loss"
+                    element={<ProfitAndLoss />}
+                  />
+                  <Route path="cash" element={<Cash />} />
+                  <Route path="assets" element={<Assets />} />
+                  <Route path="settings" element={<Settings />}>
+                    <Route path="/settings/account" element={<Account />} />
+                  </Route>
                 </Route>
-              </Route>
-              <Route path="signup" element={<Signup />} />
-              <Route path="login" element={<Login />} />
-              <Route path="*" element={<PageNotFound />} />
-            </Routes>
-          </Suspense>
-        </BrowserRouter>
+                <Route path="signup" element={<Signup />} />
+                <Route path="login" element={<Login />} />
+                <Route path="*" element={<PageNotFound />} />
+              </Routes>
+            </Suspense>
+          </BrowserRouter>
 
-        <Toaster
-          position="top-center"
-          gutter={12}
-          containerStyle={{
-            margin: '8px',
-          }}
-          toastOptions={{
-            success: {
-              duration: 3000,
-            },
-            error: {
-              duration: 5000,
-            },
-            style: {
-              fontSize: '16px',
-              maxWidth: '500px',
-              padding: '16px 24px',
-              backgroundColor: 'var(--color-grey-0)',
-              color: 'var(--color-grey-700)',
-            },
-          }}
-        />
-      </QueryClientProvider>
+          <Toaster
+            position="top-center"
+            gutter={12}
+            containerStyle={{
+              margin: '8px',
+            }}
+            toastOptions={{
+              success: {
+                duration: 3000,
+              },
+              error: {
+                duration: 5000,
+              },
+              style: {
+                fontSize: '16px',
+                maxWidth: '500px',
+                padding: '16px 24px',
+                backgroundColor: 'var(--color-grey-0)',
+                color: 'var(--color-grey-700)',
+              },
+            }}
+          />
+        </QueryClientProvider>
+      </PrivacyModeProvider>
     </DarkModeProvider>
   );
 }

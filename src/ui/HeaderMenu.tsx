@@ -4,6 +4,7 @@ import ButtonIcon from './ButtonIcon';
 import { HiOutlineUser } from 'react-icons/hi2';
 import { useNavigate } from 'react-router-dom';
 import DarkModeToggle from './DarkModeToggle';
+import PrivacyModeToggle from './PrivacyModeToggle';
 
 const StyledHeaderMenu = styled.ul`
   display: flex;
@@ -18,6 +19,9 @@ function HeaderMenu() {
         <ButtonIcon onClick={()=>{navigate('/settings/account')}}>
           <HiOutlineUser />
         </ButtonIcon>
+      </li>
+      <li>
+        <PrivacyModeToggle/>
       </li>
       <li>
         <DarkModeToggle/>
