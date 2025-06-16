@@ -2,6 +2,7 @@ import { HiOutlineBriefcase, HiOutlineCurrencyRupee } from 'react-icons/hi';
 import Stat from './Stat';
 import { formatCurrency } from '../../utils/helpers';
 import { HiOutlineBanknotes, HiOutlinePercentBadge } from 'react-icons/hi2';
+import { usePrivacyMode } from '../../context/PrivacyModeContext';
 
 function StatsStockDashboard({
   stocksCurrentAmount,
@@ -9,27 +10,40 @@ function StatsStockDashboard({
   stockProfitLoss,
   sotckProfitLossPer,
 }) {
+  const { isPrivacyMode } = usePrivacyMode();
   return (
     <>
       <Stat
         title="Invested Amount"
         color="blue"
         icon={<HiOutlineBriefcase />}
-        value={formatCurrency(stockInvestedAmount)}
+        value={
+          isPrivacyMode
+            ? String(Math.round(stockInvestedAmount)).replace(/./g, '*')
+            : formatCurrency(stockInvestedAmount)
+        }
       />
 
       <Stat
         title="Current Amount"
         color="indigo"
         icon={<HiOutlineCurrencyRupee />}
-        value={formatCurrency(stocksCurrentAmount)}
+        value={
+          isPrivacyMode
+            ? String(Math.round(stocksCurrentAmount)).replace(/./g, '*')
+            : formatCurrency(stocksCurrentAmount)
+        }
       />
 
       <Stat
         title={`${stockProfitLoss >= 0 ? 'Profit' : 'Loss'}`}
         color="green"
         icon={<HiOutlineBanknotes />}
-        value={formatCurrency(stockProfitLoss)}
+        value={
+          isPrivacyMode
+            ? String(Math.round(stockProfitLoss)).replace(/./g, '*')
+            : formatCurrency(stockProfitLoss)
+        }
       />
 
       <Stat
