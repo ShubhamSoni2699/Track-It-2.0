@@ -2,7 +2,7 @@ import { HiOutlineBriefcase, HiOutlineCurrencyRupee } from 'react-icons/hi';
 import Stat from './Stat';
 import { HiOutlineRocketLaunch } from 'react-icons/hi2';
 import { formatCurrency } from '../../utils/helpers';
-function Stats({ cashData , stocks,cashSummary }) {
+function Stats({ cashData , stocks,cashSummary ,stocksCount}) {
   const totalTransections = cashData?.length;
   return (
     <>
@@ -13,10 +13,10 @@ function Stats({ cashData , stocks,cashSummary }) {
         value={formatCurrency(stocks)}
       />
       <Stat
-        title="Total Transections"
+        title="Total Stocks"
         color="indigo"
         icon={<HiOutlineBriefcase />}
-        value={totalTransections}
+        value={stocksCount}
       />
       <Stat
         title="Cash"

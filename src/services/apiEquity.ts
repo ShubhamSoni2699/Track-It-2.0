@@ -11,6 +11,16 @@ export async function getEquityData() {
   return data;
 }
 
+export async function getStocksCount() {
+  const { count, error } = await supabase
+    .from('equity_view')
+    .select('*', { count: 'exact', head: true })
+  if (error) {
+    throw new Error('stocks count could not be loaded');
+  }
+  return count;
+}
+
 export async function getEquitySummary(){
   const {data ,error} = await supabase
   .from('equity_total_amount_view')
