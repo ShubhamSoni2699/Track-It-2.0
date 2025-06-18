@@ -161,7 +161,9 @@ function StocksModal({ setShowModal, isBuying }) {
     queryFn: getMembersData,
   });
 
-  const { register, handleSubmit, reset, formState } = useForm();
+  const { register, handleSubmit, reset, formState } = useForm({defaultValues: {
+      member_name: Members?.[0]?.Name ?? '',
+    },});
   const { errors } = formState;
 
   const queryClient = useQueryClient();
@@ -293,8 +295,6 @@ function StocksModal({ setShowModal, isBuying }) {
               <StyledInputContainer>
                 <StyledLabel>Member</StyledLabel>
                 <StyledSeletion
-                  name="members"
-                  id="member"
                   {...register('member', {
                     required: 'This Field can not be empty!!',
                   })}

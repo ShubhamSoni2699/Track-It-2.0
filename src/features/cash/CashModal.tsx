@@ -31,7 +31,8 @@ const StyledFormLayout = styled.div`
   height: 100%;
   width: 100%;
   padding: 15px;
-  background-color: ${(props) => (props.$isCredit ? 'var(--color-profit)' : 'var(--color-loss)')};
+  background-color: ${(props) =>
+    props.$isCredit ? 'var(--color-profit)' : 'var(--color-loss)'};
   border-radius: 15px;
 `;
 
@@ -118,16 +119,35 @@ const StyledLabel = styled.label`
   margin-bottom: 10px;
 `;
 
-function CashModal({ setShowModal, isCredit }) {
+interface CashModalProps {
+  setShowModal: (show: boolean) => void;
+  isCredit: boolean;
+}
 
+interface FormData {
+  member_name: string;
+  amount: number;
+  date: string;
+  remark: string;
+  tag: string;
+}
+
+function CashModal({ setShowModal, isCredit }: CashModalProps) {
   const { isPending, Members } = useMembersData();
   const { isPending: isPendingTag, Tags } = useTags(isCredit);
-  
-  const { register, handleSubmit, reset, formState } = useForm();
+
+  const { register, handleSubmit, reset, formState } = useForm<FormData>({
+    defaultValues: {
+      member_name: Members?.[0]?.Name ?? '',
+      tag: Tags?.[0]?.Name ?? '',
+    },
+  });
   const { errors } = formState;
 
   const { isCreatingTransection, mutateTransection } =
     useMutateTransection(reset);
+
+  const ref = useOutsideClick(setShowModal);
 
   function onSubmit(data) {
     const row = {
@@ -141,9 +161,9 @@ function CashModal({ setShowModal, isCredit }) {
     console.log(error);
   }
 
-  if (isPending || isPendingTag) <Spinner />;
-
-  const ref = useOutsideClick(setShowModal);
+  if (isPending || isPendingTag) {
+    return <Spinner />;
+  }
 
   return (
     <StyleContainerMain>
@@ -155,8 +175,6 @@ function CashModal({ setShowModal, isCredit }) {
               <StyledInputContainer>
                 <StyledLabel>Member</StyledLabel>
                 <StyledSeletion
-                  name="members"
-                  id="member_name"
                   {...register('member_name', {
                     required: 'This Field can not be empty!!',
                   })}
@@ -209,8 +227,6 @@ function CashModal({ setShowModal, isCredit }) {
               <StyledInputContainer>
                 <StyledLabel>Category</StyledLabel>
                 <StyledSeletion
-                  name="tag"
-                  id="tag"
                   {...register('tag', {
                     required: 'This Field can not be empty!!',
                   })}

@@ -1,6 +1,6 @@
 import supabase from "./supabase";
 
-export async function getTag(isCredit) {
+export async function getTag(isCredit:Boolean) {
   const { data, error } = isCredit
     ? await supabase.from("Tag").select("*").eq("type", "cr")
     : await supabase.from("Tag").select("*").eq("type", "dr");

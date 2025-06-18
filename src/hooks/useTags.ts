@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getTag } from "../services/apiTag";
 
-export function useTags(isCredit) {
+export function useTags(isCredit:Boolean) {
   const {
     isPending,
     data: Tags,
