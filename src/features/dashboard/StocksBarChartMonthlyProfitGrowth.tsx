@@ -50,8 +50,6 @@ function StocksBarChartMonthlyProfitGrowth() {
   const { isPending: isPendingEquitySummary, EquitySummaryDaily } =
     useEquitySummaryDataDaily();
 
-  console.log(EquitySummaryDaily, isPendingEquitySummary);
-
   const Data = EquitySummaryDaily?.reduce((accumulator, row) => {
     const date = new Date(row.summary_date);
     const year = date.getFullYear();

@@ -60,8 +60,6 @@ function StocksWeightPieChartPer() {
     ? addColorsToTickers(sortedEquityData, colors, capital)
     : '';
 
-  console.log(tickerWithColorsAndPer);
-
   return (
     <ChartBox>
       <Heading as="h2">Stock Weight (%)</Heading>

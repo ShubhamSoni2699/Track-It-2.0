@@ -5,6 +5,7 @@ import { useOutsideClick } from '../../hooks/useOutsideClick';
 import { useMembersData } from '../../hooks/useMembersData';
 import { useTags } from '../../hooks/useTags';
 import { useMutateTransection } from './useMutateTransection';
+import { useEffect } from 'react';
 
 const StyleContainerMain = styled.div`
   position: fixed;
@@ -142,6 +143,18 @@ function CashModal({ setShowModal, isCredit }: CashModalProps) {
       tag: Tags?.[0]?.Name ?? '',
     },
   });
+
+  useEffect(() => {
+    if (Members && Tags) {
+      reset({
+        member_name: Members[0]?.Name,
+        tag: Tags[0]?.Name,
+        date: '',
+        remark: '',
+      });
+    }
+  }, [Members, Tags, reset]);
+
   const { errors } = formState;
 
   const { isCreatingTransection, mutateTransection } =

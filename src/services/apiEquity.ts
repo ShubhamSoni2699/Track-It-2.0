@@ -14,28 +14,52 @@ export async function getEquityData() {
 export async function getStocksCount() {
   const { count, error } = await supabase
     .from('equity_view')
-    .select('*', { count: 'exact', head: true })
+    .select('*', { count: 'exact', head: true });
   if (error) {
     throw new Error('stocks count could not be loaded');
   }
   return count;
 }
 
-export async function getEquitySummary(){
-  const {data ,error} = await supabase
-  .from('equity_total_amount_view')
-  .select('*')
-  if(error){
+export async function getEquitySummary() {
+  const { data, error } = await supabase
+    .from('equity_total_amount_view')
+    .select('*');
+  if (error) {
     throw new Error('Getting error in supabase');
   }
   return data;
 }
 
 export async function getEquitySummaryDaily() {
-  const {data ,error} = await supabase
-  .from('equity_daily_summary_with_profit')
-  .select('*')
-  if(error){
+  const { data, error } = await supabase
+    .from('equity_daily_summary_with_profit')
+    .select('*');
+  if (error) {
+    throw new Error('Getting error in supabase');
+  }
+  return data;
+}
+
+export async function getDailyPerformanceEquity() {
+  const { data, error } = await supabase
+    .from('equity_daily_ltp_changes')
+    .select('*')
+    .limit(1)
+    .single()
+    .order('summary_date', { ascending: false });
+  if (error) {
+    throw new Error('Getting error in supabase');
+  }
+  return data;
+}
+
+export async function getPerformanceEquity() {
+  const { data, error } = await supabase
+    .from('equity_daily_ltp_changes')
+    .select('*')
+    .order('summary_date', { ascending: false });
+  if (error) {
     throw new Error('Getting error in supabase');
   }
   return data;

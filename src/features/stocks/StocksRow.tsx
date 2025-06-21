@@ -5,20 +5,6 @@ import getLTP from '../../services/apiGetLTP';
 import { getTicker, setLTP } from '../../services/apiEquity';
 import toast from 'react-hot-toast';
 import Table from '../../ui/Table';
-// import useLtp from "../../services/useLtp.jsx";
-
-// const TableRow = styled.div`
-//   display: grid;
-//   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-//   column-gap: 2.4rem;
-//   align-items: center;
-//   padding: 1.4rem 2.4rem;
-//   background-color: var(--color-grey-100);
-
-//   &:not(:last-child) {
-//     border-bottom: 1px solid var(--color-grey-100);
-//   }
-// `;
 
 const Ticker = styled.div`
   font-size: 1.6rem;

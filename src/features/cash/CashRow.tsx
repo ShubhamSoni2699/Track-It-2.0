@@ -7,20 +7,6 @@ import { useCashSummary } from './useCashSummary';
 import { useDeleteLastTransecion } from './useDeleteLastTransection';
 import { useLastestTransectionId } from './useLastestTransectionId';
 
-const TableRow = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 0.5fr 1fr 1fr 1fr 1fr;
-  column-gap: 2.4rem;
-  align-items: center;
-  padding: 1.4rem 2.4rem;
-  background-color: ${(props) =>
-    props.$isCredit ? 'var(--color-profit)' : 'var(--color-loss)'};
-
-  &:not(:last-child) {
-    border-bottom: 1px solid var(--color-grey-100);
-  }
-`;
-
 const Type = styled.div`
   font-size: 1.6rem;
   font-weight: 600;
