@@ -91,7 +91,7 @@ function Row({ children, type='' , isPadding=true }) {
 }
 
 function Body({ data, render }) {
-  if (!data.length) return <Empty>No data to show at the movement</Empty>;
+  if (!data?.length) return <Empty>No data to show at the movement</Empty>;
   return <StyledBody>{data.map(render)}</StyledBody>;
 }
 

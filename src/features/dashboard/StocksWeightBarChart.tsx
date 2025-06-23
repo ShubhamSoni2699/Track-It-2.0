@@ -36,7 +36,7 @@ const ChartBox = styled.div`
 `;
 
 function addColorsToTickers(tickers, colors) {
-  return tickers.map((tickerObj, index) => {
+  return tickers?.map((tickerObj, index) => {
     const colorIndex = index % colors.length;
     return {
       ...tickerObj,
@@ -93,7 +93,7 @@ function StocksWeightBarChart() {
               iconType="circle"
             />
             <Bar dataKey="current_amount" fill="#8884d8">
-              {tickerWithColors.map((entry) => (
+              {tickerWithColors?.map((entry) => (
                 <Cell key={entry.ticker} fill={entry.color} />
               ))}
             </Bar>

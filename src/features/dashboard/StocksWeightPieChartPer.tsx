@@ -34,7 +34,7 @@ const ChartBox = styled.div`
 `;
 
 function addColorsToTickers(tickers, colors, capital) {
-  return tickers.map((tickerObj, index) => {
+  return tickers?.map((tickerObj, index) => {
     const colorIndex = index % colors.length;
     const amount = tickerObj.current_amount;
     return {
@@ -76,7 +76,7 @@ function StocksWeightPieChartPer() {
               outerRadius={110}
               paddingAngle={5}
             >
-              {tickerWithColorsAndPer.map((entry) => (
+              {tickerWithColorsAndPer?.map((entry) => (
                 <Cell
                   fill={entry.color}
                   stroke={entry.color}

@@ -4,9 +4,9 @@ import StatsStockDashboard from './StatsStockDashboard';
 import DailyStocksChart from './DailyStocksChart';
 import StocksWeightBarChart from './StocksWeightBarChart';
 import StocksWeightPieChartPer from './StocksWeightPieChartPer';
-import DailyStocksBarChart from './DailyStocksBarChart';
 import StocksBarChartMonthlyProfitGrowth from './StocksBarChartMonthlyProfitGrowth';
 import StocksDailyPerformance from './StocksDailyPerformance';
+import DailyPerformanceStocksChart from './DailyPerformanceStocksChart';
 
 const StyledDashboardLayout = styled.div`
   display: grid;
@@ -30,6 +30,7 @@ function DashboardLayoutStocks() {
         />
       )}
       <DailyStocksChart />
+      <DailyPerformanceStocksChart/>
       <StocksBarChartMonthlyProfitGrowth />
       <StocksWeightPieChartPer />
       <StocksWeightBarChart />
