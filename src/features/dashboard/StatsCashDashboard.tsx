@@ -2,7 +2,7 @@ import { HiOutlineBriefcase, HiOutlineCurrencyRupee } from 'react-icons/hi';
 import Stat from './Stat';
 import { HiOutlineFaceFrown, HiOutlineFaceSmile } from 'react-icons/hi2';
 import { formatCurrency } from '../../utils/helpers';
-import { usePrivacyMode } from '../../context/PrivacyModeContext';
+import { usePrivacyMode } from '../../hooks/usePrivacyMode';
 
 function StatsCashDashboard({ cashData, cashSummary }) {
   const totalTransections = cashData?.length;

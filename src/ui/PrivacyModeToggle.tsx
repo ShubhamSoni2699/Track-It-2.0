@@ -1,5 +1,5 @@
 import ButtonIcon from './ButtonIcon';
-import { usePrivacyMode } from '../context/PrivacyModeContext';
+import { usePrivacyMode } from '../hooks/usePrivacyMode';
 import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi';
 
 function PrivacyModeToggle() {
