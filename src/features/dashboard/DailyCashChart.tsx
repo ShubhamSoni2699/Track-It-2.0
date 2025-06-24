@@ -11,7 +11,7 @@ import {
   YAxis,
 } from 'recharts';
 import { useCashDailySummary } from '../cash/useCashDailySummary';
-import { useDarkMode } from '../../context/DarkModeContext';
+import { useDarkMode } from '../../hooks/useDarkMode';
 
 const StyledDailyCashChart = styled(DashboardBox)`
   grid-column: 1 / -1;

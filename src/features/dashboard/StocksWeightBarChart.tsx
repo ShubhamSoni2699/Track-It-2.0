@@ -12,7 +12,7 @@ import {
 } from 'recharts';
 import { useFilterAndSort } from '../stocks/useFilterAndSort';
 import { getColorsForPieChart } from './pieChartColors';
-import { useDarkMode } from '../../context/DarkModeContext';
+import { useDarkMode } from '../../hooks/useDarkMode';
 
 const ChartBox = styled.div`
   /* Box */

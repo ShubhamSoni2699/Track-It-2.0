@@ -12,7 +12,7 @@ import {
   ReferenceLine,
 } from 'recharts';
 import { useFilterAndSort } from '../cash/useFilterAndSort';
-import { useDarkMode } from '../../context/DarkModeContext';
+import { useDarkMode } from '../../hooks/useDarkMode';
 
 const ChartBox = styled.div`
   /* Box */

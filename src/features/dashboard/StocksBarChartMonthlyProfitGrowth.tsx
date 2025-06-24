@@ -11,7 +11,7 @@ import {
   ResponsiveContainer,
   ReferenceLine,
 } from 'recharts';
-import { useDarkMode } from '../../context/DarkModeContext';
+import { useDarkMode } from '../../hooks/useDarkMode';
 import { useEquitySummaryDataDaily } from '../stocks/useEquitySummaryDataDaily';
 
 const ChartBox = styled.div`

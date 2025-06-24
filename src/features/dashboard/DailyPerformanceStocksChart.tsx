@@ -10,7 +10,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
-import { useDarkMode } from '../../context/DarkModeContext';
+import { useDarkMode } from '../../hooks/useDarkMode';
 import { usePerformanceEquity } from '../stocks/usePerformanceEquity';
 
 const StyledDailyCashChart = styled(DashboardBox)`

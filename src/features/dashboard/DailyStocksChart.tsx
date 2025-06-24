@@ -11,7 +11,7 @@ import {
   YAxis,
 } from 'recharts';
 import { useEquitySummaryDataDaily } from '../stocks/useEquitySummaryDataDaily';
-import { useDarkMode } from '../../context/DarkModeContext';
+import { useDarkMode } from '../../hooks/useDarkMode';
 
 const StyledDailyCashChart = styled(DashboardBox)`
   grid-column: 1 / -1;
