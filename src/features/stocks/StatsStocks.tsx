@@ -2,7 +2,7 @@ import { HiOutlineBriefcase, HiOutlineCurrencyRupee } from 'react-icons/hi';
 import Stat from '../dashboard/Stat';
 import { formatCurrency } from '../../utils/helpers';
 import { HiOutlineBanknotes, HiOutlinePercentBadge } from 'react-icons/hi2';
-import { usePrivacyMode } from '../../context/PrivacyModeContext';
+import { usePrivacyMode } from '../../hooks/usePrivacyMode';
 
 function StatsStocks({
   stocksCurrentAmount,

@@ -45,6 +45,7 @@ function StocksDailyPerformance() {
     sortedPerformanceData = sortedEquityData?.sort((a, b) => {
       return (a[sortingFiled] - b[sortingFiled]) * -1;
     });
+    console.log(sortedPerformanceData);
   }
 
   return (
